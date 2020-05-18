@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ArchLinux 安装，UEFI+GPT archlinux安装，来自余老师的经验之作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArchLinux 安装，UEFI+GPT">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/ArchLinux%20%E5%AE%89%E8%A3%85%EF%BC%8CUEFI+GPT/index.html">
+<meta property="og:site_name" content="拾月时光">
+<meta property="og:description" content="ArchLinux 安装，UEFI+GPT archlinux安装，来自余老师的经验之作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/archlinux.jpg">
+<meta property="article:published_time" content="2020-05-10T15:06:15.687Z">
+<meta property="article:modified_time" content="2020-05-10T14:32:59.601Z">
+<meta property="article:author" content="失眠的波妞">
+<meta property="article:tag" content="美句">
+<meta property="article:tag" content="一句话">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="科技">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/archlinux.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/10/ArchLinux%20%E5%AE%89%E8%A3%85%EF%BC%8CUEFI+GPT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ArchLinux 安装，UEFI+GPT | 拾月时光</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">拾月时光</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">大风起兮云飞扬，时间一去兮莫心慌</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/10/ArchLinux%20%E5%AE%89%E8%A3%85%EF%BC%8CUEFI+GPT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="失眠的波妞">
+      <meta itemprop="description" content="一只不会游泳的波妞,漂泊在文字的海洋...起起伏伏">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="拾月时光">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ArchLinux 安装，UEFI+GPT
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-10 23:06:15 / 修改时间：22:32:59" itemprop="dateCreated datePublished" datetime="2020-05-10T23:06:15+08:00">2020-05-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ArchLinux-安装，UEFI-GPT"><a href="#ArchLinux-安装，UEFI-GPT" class="headerlink" title="ArchLinux 安装，UEFI+GPT"></a>ArchLinux 安装，UEFI+GPT</h2><blockquote>
+<p>archlinux安装，来自余老师的经验之作</p>
+</blockquote>
+<a id="more"></a>
+
+<p>archlinux安装有些许麻烦，所以还是备份一个出来吧，以后头脑一热可以有一份参考文档。。。本文提供者<a href="https://github.com/ywyself" target="_blank" rel="noopener">ywyself</a><br><img src="/images/archlinux.jpg" alt="img"></p>
+<h3 id="ArchLinux-安装，UEFI-GPT-1"><a href="#ArchLinux-安装，UEFI-GPT-1" class="headerlink" title="ArchLinux 安装，UEFI+GPT"></a>ArchLinux 安装，UEFI+GPT</h3><h4 id="安装前"><a href="#安装前" class="headerlink" title="安装前"></a>安装前</h4><h5 id="设置键盘布局"><a href="#设置键盘布局" class="headerlink" title="设置键盘布局"></a>设置键盘布局</h5><blockquote>
+<p>可以省略，默认为us键盘布局</p>
+</blockquote>
+<ul>
+<li>查看可用的键盘布局</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /usr/share/kbd/keymaps/**/*.map.gz</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置键盘布局</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># loadkeys us</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="验证启动方式"><a href="#验证启动方式" class="headerlink" title="验证启动方式"></a>验证启动方式</h5><blockquote>
+<p>以下命令执行成功则为uefi模式启动</p>
+</blockquote>
+<ul>
+<li>执行命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ls /sys/firmware/efi/efivars</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="连接网络"><a href="#连接网络" class="headerlink" title="连接网络"></a>连接网络</h5><blockquote>
+<p>最好使用有线连接，因为简单</p>
+</blockquote>
+<ul>
+<li>测试网络是否已经连接</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ping www.baidu.com</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用有线连接网络</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dhcpcd</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用无线连接 </li>
+</ol>
+<blockquote>
+<p>使用<code>wifi-menu</code>命令，命令可能无法使用，需要先安装<code>wpa_supplicant</code>和<code>dialog</code>模块</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wifi-menu</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装<code>wpa_supplicant</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pacman -S wpa_supplicant</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="更新系统时间"><a href="#更新系统时间" class="headerlink" title="更新系统时间"></a>更新系统时间</h5><ul>
+<li>设置时间同步</li>
+</ul>
+<blockquote>
+<p>注意用<code>date</code>看一下时间，与正确时间差了8个小时</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># timedatectl set-ntp true</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="对磁盘进行分区"><a href="#对磁盘进行分区" class="headerlink" title="对磁盘进行分区"></a>对磁盘进行分区</h5><blockquote>
+<p>目前划分的是3个分区，<code>/boot</code>，<code>/home</code>,<code>/</code></p>
+</blockquote>
+<ul>
+<li><p>对磁盘进行分区</p>
+<ul>
+<li><p>使用<code>parted</code>进行磁盘分区</p>
+<ul>
+<li>查看磁盘设备</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parted -l</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以下为虚拟机上的分区，分区表格式为mbr</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Model: Virtio Block Device (virtblk)</span><br><span class="line">Disk /dev/vda: 42.9GB</span><br><span class="line">Sector size (logical/physical): 512B/512B</span><br><span class="line">Partition Table: msdos</span><br><span class="line">Disk Flags:</span><br><span class="line">Number Start   End     Size    Type     File system  Flags</span><br><span class="line">1      1049kB  42.9GB  42.9GB  primary  ext4         boot</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选择操作设备块</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parted /dev/vda</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改为<code>GPT</code>格式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(parted) mklabel</span><br><span class="line">New disk label <span class="built_in">type</span>? gpt                                                  </span><br><span class="line">Warning: Partition(s) on /dev/vda are being used.</span><br><span class="line">Ignore/Cancel? i                                                          </span><br><span class="line">Warning: The existing disk label on /dev/vda will be destroyed and all data on this disk will be lost. Do you want to <span class="built_in">continue</span>?</span><br><span class="line">Yes/No? y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除已有分区</li>
+</ul>
+<blockquote>
+<p>使用rm 数字删除分区</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(parted) rm 1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>新建分区</p>
+<ul>
+<li>新建<code>boot</code>分区</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart</span><br><span class="line">Partition name?  []?</span><br><span class="line">File system <span class="built_in">type</span>?  [ext2]? ext4</span><br><span class="line">Start? 0</span><br><span class="line">End? 512M</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建<code>home</code>分区</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart</span><br><span class="line">Partition name?  []? /home</span><br><span class="line">File system <span class="built_in">type</span>?  [ext2]? ext4</span><br><span class="line">Start? 512M</span><br><span class="line">End? 10G</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建<code>根</code>分区</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(parted) mkpart</span><br><span class="line">Partition name?  []? /</span><br><span class="line">File system <span class="built_in">type</span>?  [ext2]?</span><br><span class="line">Start? 10G</span><br><span class="line">End? -1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看分区信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(parted) p</span><br><span class="line">Model: Virtio Block Device (virtblk)</span><br><span class="line">Disk /dev/vda: 42.9GB</span><br><span class="line">Sector size (logical/physical): 512B/512B</span><br><span class="line">Partition Table: gpt</span><br><span class="line">Disk Flags:</span><br><span class="line">Number  Start   End     Size    File system  Name   Flags</span><br><span class="line">1      17.4kB  512MB   512MB</span><br><span class="line">2      512MB   10.0GB  9488MB               /home</span><br><span class="line">3      10.0GB  42.9GB  32.9GB               /</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出<code>(parted) quit</code></p>
+</li>
+</ul>
+</li>
+<li><p>使用<code>fdisk</code>进行磁盘分区</p>
+<blockquote>
+<p>进行<code>fdisk</code>的命令交互操作时候不能删除输入的内容</p>
+</blockquote>
+<ul>
+<li><p>选择操作设备块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fdisk /dev/vda</span></span><br><span class="line">WARNING: fdisk GPT support is currently new, and therefore <span class="keyword">in</span> an experimental phase. Use at your own discretion.</span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain <span class="keyword">in</span> memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write <span class="built_in">command</span>.</span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>):</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个<code>empty gpt</code>分区表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): g</span><br><span class="line">Building a new GPT disklabel (GUID: C5734B4C-B436-466C-9D1C-693388EA850A)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分区，作为<code>boot</code>分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</span><br><span class="line">Partition number (1-128, default 1):</span><br><span class="line">First sector (2048-83886046, default 2048):</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G,T,P&#125; (2048-83886046, default 83886046): +512M</span><br><span class="line">Created partition 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分区，作为<code>home</code>分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</span><br><span class="line">Partition number (2-128, default 2):</span><br><span class="line">First sector (1050624-83886046, default 1050624):</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G,T,P&#125; (1050624-83886046, default 83886046): +10G</span><br><span class="line">Created partition 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分区，作为<code>/</code>分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</span><br><span class="line">Partition number (3-128, default 3):</span><br><span class="line">First sector (22022144-83886046, default 22022144):</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G,T,P&#125; (22022144-83886046, default 83886046):</span><br><span class="line">Created partition 3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看分区信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): p</span><br><span class="line">Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors</span><br><span class="line">Units = sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disk label <span class="built_in">type</span>: gpt</span><br><span class="line"></span><br><span class="line"><span class="comment">#         Start          End    Size  Type            Name</span></span><br><span class="line">1           34      1000000  488.3M  Microsoft basic</span><br><span class="line">2      1000001     19531250    8.9G  Microsoft basic /home</span><br><span class="line">3     19531776     83884031   30.7G  Microsoft basic /</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化<code>boot</code>分区</p>
+<blockquote>
+<p>必须为fat32格式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkfs.fat -F32 /dev/sdxY</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化<code>home</code>,<code>/</code>分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkfs.ext4 /dev/sdxY</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h5><ul>
+<li><p>挂载<code>/</code>分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount /dev/sda3 /mnt</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载<code>boot</code>,<code>home</code>分区</p>
+<blockquote>
+<p>一定要先挂载<code>/</code>分区，不然这两个挂载点会被覆盖</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mkdir /mnt/boot</span></span><br><span class="line"><span class="comment"># mount /dev/sda1 /mnt/boot</span></span><br><span class="line"><span class="comment"># mkdir /mnt/home</span></span><br><span class="line"><span class="comment"># mount /dev/sda1 /mnt/home</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="选择镜像源地址"><a href="#选择镜像源地址" class="headerlink" title="选择镜像源地址"></a>选择镜像源地址</h5><blockquote>
+<p>这一步可以跳过，安装过程中网速可能有些慢</p>
+</blockquote>
+<ul>
+<li><p>安装<code>vim</code></p>
+<blockquote>
+<p>vim最好装上</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pacman -S vim</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改镜像源地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/pacman.d/mirrorlist</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="安装基础包"><a href="#安装基础包" class="headerlink" title="安装基础包"></a>安装基础包</h5><blockquote>
+<p>也可以使用<code># pacstrap /mnt base base-devel</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pacstrap /mnt base</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h4><h5 id="生成挂载文件（开机自动挂载分区）"><a href="#生成挂载文件（开机自动挂载分区）" class="headerlink" title="生成挂载文件（开机自动挂载分区）"></a>生成挂载文件（开机自动挂载分区）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>生成之后检查一下文件内容，应该有3个分区被挂载</p>
+</blockquote>
+<h5 id="切换到新系统中"><a href="#切换到新系统中" class="headerlink" title="切换到新系统中"></a>切换到新系统中</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># arch-chroot /mnt</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置本地时区"><a href="#设置本地时区" class="headerlink" title="设置本地时区"></a>设置本地时区</h3><ul>
+<li><p>设置时区</p>
+<blockquote>
+<p>再看时间是对的</p>
+</blockquote>
+</li>
+<li><pre><code># ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 同步时间到硬件时钟</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# hwclock --systohc
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 本地化</span><br><span class="line"></span><br><span class="line">- 取消`/etc/locale.gen`文件中下面行的注释</span><br><span class="line"></span><br><span class="line">  &gt; zh_CN.UTF<span class="number">-8</span> UTF<span class="number">-8</span></span><br><span class="line">  &gt;    zh_HK.UTF<span class="number">-8</span> UTF<span class="number">-8</span></span><br><span class="line">  &gt;    zh_TW.UTF<span class="number">-8</span> UTF<span class="number">-8</span></span><br><span class="line">  &gt;    en_US.UTF<span class="number">-8</span> UTF<span class="number">-8</span></span><br><span class="line"></span><br><span class="line">- 执行命令</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# locale-gen
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>设置本地语言</span><br><span class="line"></span><br><span class="line"><span class="bullet">  - </span>打开<span class="code">`/etc/locale.conf`</span>文件</span><br></pre></td></tr></table></figure>
+# vim /etc/locale.conf
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">加入以下内容</span><br><span class="line"></span><br><span class="line">&gt; 设置为英文，目前还没有安装中文字体</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">LANG=en_US.UTF-<span class="number">8</span></span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<h3 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h3><blockquote>
+<p>将<code>/etc/hostname</code>文件的内容修改为<code>archlinux</code></p>
+</blockquote>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vim /etc/hostname</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改<code>hosts</code>文件</h3><blockquote>
+<p>添加以下内容到<code>/etc/hosts</code></p>
+</blockquote>
+<blockquote>
+<p>127.0.0.1    localhost<br>::1            localhost</p>
+</blockquote>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vim /etc/hosts</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><ul>
+<li><p>安装<code>dialog</code>, <code>wpa_supplicant</code></p>
+<blockquote>
+<p>安装<code>wpa_supplicant</code>后可以使用<code>wifi-menu</code>命令，用界面连接wifi，依赖<code>dialog</code>模块</p>
+</blockquote>
+</li>
+<li><pre><code># pacman -S wpa_supplicant dialog
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 为`root`用户设置密码</span><br><span class="line"></span><br><span class="line">&gt; 使用命令，然后根据提示输入密码</span><br></pre></td></tr></table></figure>
+# passwd
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 安装Intel-ucode</span><br><span class="line"></span><br><span class="line">&gt; 非IntelCPU可以跳过此步骤</span><br></pre></td></tr></table></figure>
+# pacman -S intel-ucode
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 安装启动引导</span><br><span class="line"></span><br><span class="line">- 安装`grub`与`efibootmgr`</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S grub efibootmgr
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-<span class="ruby"> 部署<span class="string">`grub`</span></span></span><br><span class="line"></span><br><span class="line"><span class="ruby">-</span></span><br></pre></td></tr></table></figure>
+# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 生成配置文件</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# grub-mkconfig -o /boot/grub/grub.cfg
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 最后检查一下生成的文件</span></span><br><span class="line"></span><br><span class="line">  &gt; 看一下Arch Linux入口是否出现在文件中</span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# vim /boot/grub/grub.cfg
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">## 安装完成</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>退出新系统</span><br><span class="line"></span><br><span class="line">  &gt; 这个时候应该是在新系统中。关于如何区分是在新系统还是在安装盘中，可以看命令提示符前面的<span class="code">`root`</span>字的颜色，彩色的表示在安装盘中</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# exit
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 重启</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# reboot
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 继续一些设置</span><br><span class="line"></span><br><span class="line">&gt; 重启后进入新系统，到了字符界面，继续一些其他的设置，以及桌面环境的安装</span><br><span class="line"></span><br><span class="line">### 创建交换文件</span><br><span class="line"></span><br><span class="line">- 分配一块空间用于交换文件</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# fallocate -l 512M /swapfile
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 更改权限</span></span><br><span class="line"></span><br><span class="line">  &gt; 600 = rw- — —</span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# chmod 600 /swapfile
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 设置交换文</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# mkswap /swapfile
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 启用交换文件</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# swapon /swapfile
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>添加交换文件到<span class="code">`/etc/fstab`</span></span><br></pre></td></tr></table></figure>
+# vim /etc/fstab
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="quote">&gt; 新增加一行</span></span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+/swapfile none swap defaults 0 0
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 新建一个用户</span><br><span class="line"></span><br><span class="line">- 新建用户</span><br></pre></td></tr></table></figure>
+# useradd -m -G wheel myUserName
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="quote">&gt; - -m 是为用户创建家目录(如果有则不用这个参数)</span></span><br><span class="line"><span class="quote">&gt; - -G 为用户设置一个分组，wheel属于管理组</span></span><br><span class="line"></span><br><span class="line">给新用户设置密码</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# passwd myUserName
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">### 配置sudo</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 如果在安装系统时安装了`base-devel`这个包，那么这个命令在安装系统是一起安装了</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>安装<span class="code">`sudo`</span></span><br></pre></td></tr></table></figure>
+# pacman -S sudo
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">- </span>修改<span class="code">`/etc/sudoers`</span></span><br><span class="line">  </span><br><span class="line"><span class="bullet">- </span>方法一：在<span class="code">`root ALL=(ALL) ALL`</span>行下新增加一行</span><br><span class="line">  </span><br><span class="line"><span class="bullet">- </span>-</span><br></pre></td></tr></table></figure>
+  myUserName  ALL=(ALL)   ALL
+  <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  - 方法二：取消`%wheel  <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>)       <span class="keyword">ALL</span>`行的注释</span><br><span class="line"></span><br><span class="line">    ### 文件系统支持</span><br><span class="line"></span><br><span class="line">&gt; 要支持制作fat文件系统，安装dosfstools，默认内核只能读取ntfs，要支持ntfs读写，安装ntfs-<span class="number">3</span>g</span><br></pre></td></tr></table></figure>
+# pacman -S ntfs-3g dosfstools
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">## 安装桌面环境</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 连接网络</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>连接网络</span><br><span class="line"><span class="bullet">  - </span>有线使用<span class="code">`dhcpcd`</span></span><br><span class="line"><span class="bullet">  - </span>无线使用<span class="code">`wifi-menu`</span></span><br><span class="line"><span class="bullet">- </span>检测一下</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# ping www.baidu.com
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 安装驱动</span><br><span class="line"></span><br><span class="line">- 安装显卡驱动</span><br><span class="line"></span><br><span class="line">  &gt; 在安装Xorg的时候好像会一起安装</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S xf86-video-intel
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 安装桌面</span><br><span class="line"></span><br><span class="line">- 安装Xorg服务</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S xorg
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装桌面Xfce</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S xfce4 xfce4-goodies
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装桌面管理器sddm</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S sddm
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 设置开机启动sddm服务</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# systemctl enable sddm
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 提前配置网络</span><br><span class="line"></span><br><span class="line">- 安装`networkmanager`软件</span><br><span class="line"></span><br><span class="line">  &gt; 是图形化的网络管理工具，安装桌面后需要用到</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S networkmanager
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-<span class="ruby"> 启用<span class="string">`NetworkManager`</span>网络服务</span></span><br><span class="line"></span><br><span class="line"><span class="ruby">-</span></span><br></pre></td></tr></table></figure>
+# systemctl disable netctl
+# systemctl enable NetworkManager
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装工具栏工具来显示网络设置图标</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S network-manager-applet
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 字体设置</span><br><span class="line"></span><br><span class="line">- 安装字体</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S ttf-roboto noto-fonts noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts ttf-dejavu
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 开启桌面（系统）中文</span><br><span class="line"></span><br><span class="line">  &gt; 开启中文后字符界面（tty）无法显示中文，无法进入桌面时可以将系统字体改为英文，通常也没有机会再用tty了</span><br><span class="line">  &gt;</span><br><span class="line">  &gt; - 修改`/etc/locale.conf`</span><br><span class="line">  &gt;   将`LANG=en_US.UTF-<span class="number">8</span>`改为`LANG=zh_CN.UTF-<span class="number">8</span>`</span><br><span class="line"></span><br><span class="line">  ### 安装输入法</span><br><span class="line"></span><br><span class="line">- 安装`fcitx`</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+# pacman -S fcitx
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装输入法模块</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S fcitx-gtk3
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装一个输入法</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S fcitx-libpinyin
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="deletion">- 安装输入法图形设置界面</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-</span></span><br></pre></td></tr></table></figure>
+# pacman -S fcitx-configtool
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 安装一些软件</span><br><span class="line"></span><br><span class="line">### chromuim</span><br><span class="line"></span><br><span class="line">&gt; 浏览器</span><br></pre></td></tr></table></figure>
+# pacman -S chromuim
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### screenfetch</span><br><span class="line"></span><br><span class="line">&gt; 在终端打印发行版logo</span><br></pre></td></tr></table></figure>
+# pacman -S screenfetch
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### dock</span><br><span class="line"></span><br><span class="line">&gt; 要获得像苹果osx一样的dock可以用docky或者dash-to-dock</span><br></pre></td></tr></table></figure>
+# pacman -S docky
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### sl</span><br><span class="line"></span><br><span class="line">&gt; 火车头</span><br></pre></td></tr></table></figure>
+# pacman -S sl</code></pre></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/10/Alfred%203%20%E6%AF%8F%E6%AC%A1%E5%BC%80%E6%9C%BA%E8%BF%90%E8%A1%8C%E5%90%8E%E9%83%BD%E6%8F%90%E7%A4%BA%E6%98%AF%E5%90%A6%E5%85%81%E8%AE%B8%E8%AE%BF%E9%97%AE%E9%80%9A%E8%AE%AF%E5%BD%95/" rel="prev" title="Alfred 3 每次开机运行后都提示是否允许访问通讯录">
+      <i class="fa fa-chevron-left"></i> Alfred 3 每次开机运行后都提示是否允许访问通讯录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%B3%BB%E5%88%97%E4%B9%8B%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E7%AF%87/" rel="next" title="Hexo博客使用系列之发布文章篇">
+      Hexo博客使用系列之发布文章篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  <div>
+    <div>
+  
+    <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+      <span>-------- 本文结束 </span>
+      <i class="fa fa-paw"></i>
+      <span> 感谢阅读 --------</span>
+    </div>
+  
+</div>
+  </div>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArchLinux-安装，UEFI-GPT"><span class="nav-number">1.</span> <span class="nav-text">ArchLinux 安装，UEFI+GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArchLinux-安装，UEFI-GPT-1"><span class="nav-number">1.1.</span> <span class="nav-text">ArchLinux 安装，UEFI+GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装前"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装前</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设置键盘布局"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">设置键盘布局</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证启动方式"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">验证启动方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接网络"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">连接网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新系统时间"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">更新系统时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对磁盘进行分区"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">对磁盘进行分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#挂载分区"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">挂载分区</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#选择镜像源地址"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">选择镜像源地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装基础包"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">安装基础包</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置系统"><span class="nav-number">1.1.3.</span> <span class="nav-text">配置系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#生成挂载文件（开机自动挂载分区）"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">生成挂载文件（开机自动挂载分区）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切换到新系统中"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">切换到新系统中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置本地时区"><span class="nav-number">1.2.</span> <span class="nav-text">设置本地时区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置主机名"><span class="nav-number">1.3.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改hosts文件"><span class="nav-number">1.4.</span> <span class="nav-text">修改hosts文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络配置"><span class="nav-number">1.5.</span> <span class="nav-text">网络配置</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">失眠的波妞</p>
+  <div class="site-description" itemprop="description">一只不会游泳的波妞,漂泊在文字的海洋...起起伏伏</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xingcxb" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xingcxb" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">失眠的波妞</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  <script src="/js/wobblewindow.js"></script>
+  <script>
+    //只在桌面版网页启用特效
+    if( window.innerWidth > 768  ){
+      $(document).ready(function () {
+        
+          $('#header').wobbleWindow({
+            radius: 50,
+            movementTop: false,
+            movementLeft: false,
+            movementRight: false,
+            debug: false,
+          });
+        
+
+        
+          $('#sidebar').wobbleWindow({
+            radius: 50,
+            movementLeft: false,
+            movementTop: false,
+            movementBottom: false,
+            position: 'fixed',
+            debug: false,
+          });
+        
+
+        
+          $('#footer').wobbleWindow({
+            radius: 50,
+            movementBottom: false,
+            movementLeft: false,
+            movementRight: false,
+            offsetX: ,
+            position: 'absolute',
+            debug: false,
+          });
+        
+      });
+    }
+  </script>
+
+</body>
+</html>
