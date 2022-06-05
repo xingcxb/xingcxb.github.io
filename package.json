@@ -1,5 +1,5 @@
 {
-  "name": "symbol_blog",
+  "name": "xingcxb.github.io",
   "version": "1.0.0",
   "main": "index.js",
   "author": "symbol",
@@ -22,7 +22,11 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "deploy": "bash deploy.sh",
+    "editFm": "node utils/editFrontmatter.js",
+    "publish": "cd ./vdoing && npm publish && cd .. && yarn updateTheme",
+    "updateTheme": "yarn remove vuepress-theme-vdoing && rm -rf node_modules && yarn && yarn add vuepress-theme-vdoing -D"
   },
   "dependencies": {
     "dayjs": "^1.11.2",
