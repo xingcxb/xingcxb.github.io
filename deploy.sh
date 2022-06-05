@@ -12,7 +12,7 @@ cd docs/.vuepress/dist
 # 如果手运行该脚本，则执行if里的，如果是GitHub自动执行该脚本，则是else里的
 if [ -z "$GITHUB_TOKEN" ]; then
  msg='deploy'
- githubUrl=git@github.com:Kele-Bingtang/notes-blog.git  # 替换自己的 GitHub 仓库地址，SSH格式
+ githubUrl=git@github.com:xingcxb/symbol_blog.git  # 替换自己的 GitHub 仓库地址，SSH格式
 else
  msg='来自github actions的自动部署'
  # 替换自己的 GitHub 仓库地址，更改的是 @后面的地址 以及 把Kele-Bingtang 改为自己用户名
