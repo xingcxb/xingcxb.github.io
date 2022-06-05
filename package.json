@@ -13,6 +13,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "dayjs": "^1.11.2",
     "vuepress-plugin-reading-progress": "^1.0.10"
   }
 }
