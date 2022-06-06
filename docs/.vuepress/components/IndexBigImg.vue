@@ -553,6 +553,7 @@ function nextAllTipElement(elem) {
 /* 下面是箭头相关的样式 */
 .banner-arrow {
   display: block;
+  color: #07c245;
   margin: 12rem auto 0;
   bottom: 45px;
   width: 20px;
