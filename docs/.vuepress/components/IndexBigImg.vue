@@ -508,6 +508,7 @@ function nextAllTipElement(elem) {
 .vdoing-index-class .home-wrapper .banner {
   margin-top: 0 !important;
   height: 100vh;
+  color: #002c34;
   background-attachment: fixed !important;
 }
 
