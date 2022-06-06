@@ -20,11 +20,11 @@ module.exports = [
   ], // 阿里在线矢量库
   ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }], // 解决 Chrome 网站统计不准确问题
 
-  [
-    "noscript",
-    {},
-    '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }',
-  ], // 私密文章模块需要
+  // [
+  //   "noscript",
+  //   {},
+  //   '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }',
+  // ], // 私密文章模块需要
 
   [
     "meta",
