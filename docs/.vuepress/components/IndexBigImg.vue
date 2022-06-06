@@ -508,6 +508,7 @@ function nextAllTipElement(elem) {
 .vdoing-index-class .home-wrapper .banner {
   margin-top: 0 !important;
   height: 100vh;
+  color: #002c34;
   background-attachment: fixed !important;
 }
 
@@ -594,8 +595,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #fff;
-  border-top: 3px solid #fff;
+  border-right: 3px solid #07c245;
+  border-top: 3px solid #07c245;
   transform: rotate(135deg);
   position: absolute;
   bottom: 10px;
@@ -606,8 +607,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #fff;
-  border-top: 3px solid #fff;
+  border-right: 3px solid #07c245;
+  border-top: 3px solid #07c245;
   transform: rotate(135deg);
 }
 

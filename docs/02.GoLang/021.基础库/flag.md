@@ -1,0 +1,44 @@
+---
+author:
+  name: symbol
+  link: https://xingcxb.github.io
+title: flag
+date: 2022-06-06 16:56:37
+permalink: /go/basic/
+categories:
+  - GoLang
+  - 基础库
+tags:
+  - GoLang
+---
+
+[[TOC]]
+
+# `flag`库
+
+## `flag.Parse()`
+
+用于处理命令行参数进行解析
+
+支持的命令行参数格式为：
+
+- `-flag xxx`（使用空格，一个`-`符号）
+- `--flag xxx`（使用空格，两个`-`符号）
+- `-flag=xxx`（使用等号，一个`-`符号）
+- `--flag=xxx`（使用等号，两个`-`符号）
+
+## 处理启动时携带的参数
+
+```go
+var(
+  proModel = flag.String("mode","debug","更换程序启动的状态，可选debug、product")
+)
+
+func main(){
+  //用于关联入口参数
+  flag.Parse()
+}
+
+//启动时注入参数的写法
+./xxx -mode=product
+```
