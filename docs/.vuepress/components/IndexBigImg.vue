@@ -607,8 +607,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #fff;
-  border-top: 3px solid #fff;
+  border-right: 3px solid #07c245;
+  border-top: 3px solid #07c245;
   transform: rotate(135deg);
 }
 
