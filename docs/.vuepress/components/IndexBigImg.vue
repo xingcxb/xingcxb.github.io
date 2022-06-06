@@ -553,7 +553,6 @@ function nextAllTipElement(elem) {
 /* 下面是箭头相关的样式 */
 .banner-arrow {
   display: block;
-  color: #07c245;
   margin: 12rem auto 0;
   bottom: 45px;
   width: 20px;
@@ -596,8 +595,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #fff;
-  border-top: 3px solid #fff;
+  border-right: 3px solid #07c245;
+  border-top: 3px solid #07c245;
   transform: rotate(135deg);
   position: absolute;
   bottom: 10px;
