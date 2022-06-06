@@ -3,7 +3,7 @@
 const baidutj = `var _hmt = _hmt || [];
           (function() {
             var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?注意更换"; 
+            hm.src = "https://hm.baidu.com/hm.js?4cd746698b2a13cb0c902d7ba1b5b57f"; 
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
           })();

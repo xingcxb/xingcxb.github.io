@@ -5,12 +5,7 @@ module.exports = {
   items: [
     {
       text: "基础",
-      items: [
-        {
-          text: "基础库",
-          link: "/basic/",
-        },
-      ],
+      items: [{ text: "基础库", link: "/basic/" }],
     },
     {
       text: "第三方库",
