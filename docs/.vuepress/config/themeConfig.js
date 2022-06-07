@@ -18,7 +18,7 @@ module.exports = {
   searchMaxSuggestions: 10, // 搜索结果显示最大数
   lastUpdated: "更新时间", // 开启更新时间，并配置前缀文字   string | boolean (取值为git提交时间)
   docsDir: "docs", // 指定根目录
-  editLinks: true, // 启用编辑
+  editLinks: false, // 启用编辑
   editLinkText: "编辑此页",
 
   //*** 以下配置是Vdoing主题改动和新增的配置 ***//
