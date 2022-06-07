@@ -5,14 +5,11 @@ module.exports = {
   items: [
     {
       text: "基础",
-      items: [{ text: "基础库", link: "/basic/" }],
+      link: "/basic/",
     },
     {
       text: "第三方库",
-      items: [
-        { text: "gjson", link: "/gjson/" },
-        { text: "go-sqlite3", link: "/go-sqlite3/" },
-      ],
+      link: "/lib/",
     },
   ],
 };
