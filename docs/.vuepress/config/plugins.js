@@ -7,6 +7,13 @@ module.exports = [
       globalUIComponents: ["BlockToggle", "GlobalTip", "Aplayer"], // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
     },
   ],
+  // 谷歌统计代码
+  [
+    "@vuepress/google-analytics",
+    {
+      ga: "UA-98291551-1", //替换成自己实际申请的ID
+    },
+  ],
   // 本地插件
   // [require('../plugins/love-me'), { // 鼠标点击爱心特效
   //   // color: '#11a8cd', // 爱心颜色，默认随机色
