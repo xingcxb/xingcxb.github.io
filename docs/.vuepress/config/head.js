@@ -34,6 +34,7 @@ module.exports = [
         "全栈博客,个人技术博客,Go,Golang开发,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown,Go",
     },
   ],
+  ["meta", { name: "baidu-site-verification", content: "code-lnsYFdztcH" }],
   ["meta", { name: "theme-color", content: "#11a8cd" }], // 移动浏览器主题颜色
 
   // 下面四个 script 是 demo-block 插件用到，但是因为导航栏兼容问题，不再使用
