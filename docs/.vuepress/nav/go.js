@@ -1,4 +1,4 @@
-// 经验导航栏
+// golang导航栏
 module.exports = {
   text: "GoLang",
   link: "/go/",
