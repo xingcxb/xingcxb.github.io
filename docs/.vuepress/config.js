@@ -20,7 +20,7 @@ module.exports = {
       lang: "zh-CN",
       title: penName + title,
       description:
-        "全栈博客,个人技术博客,Go,Golang开发,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown,Go",
+        "不器blog,全栈博客,个人技术博客,Go,Golang开发,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown,Go",
     },
   },
   plugins,
