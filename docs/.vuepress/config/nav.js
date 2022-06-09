@@ -1,10 +1,10 @@
-const go = require("../nav/go");
+const language = require("../nav/language");
 const projects = require("../nav/projects");
 const tools = require("../nav/tools");
 module.exports = [
   { text: "首页", link: "/" },
   { text: "吐槽", link: "/speak/" },
-  go,
+  language,
   tools,
   { text: "读吧", link: "/read/" },
   projects,
