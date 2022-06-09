@@ -1,15 +1,27 @@
 // golang导航栏
 module.exports = {
-  text: "GoLang",
-  link: "/go/",
+  text: "语言",
+  link: "/language/",
   items: [
     {
-      text: "基础",
-      link: "/basic/",
+      text: "GoLang",
+      items: [
+        {
+          text: "基础",
+          link: "/go/basic/",
+        },
+        {
+          text: "第三方库",
+          link: "/go/lib/",
+        },
+      ],
     },
     {
-      text: "第三方库",
-      link: "/lib/",
+      text: "Java",
+      items: [
+        { text: "基础库", link: "/java/basic/" },
+        { text: "第三方库", link: "/java/lib/" },
+      ],
     },
   ],
 };
