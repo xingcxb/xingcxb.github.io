@@ -10,7 +10,14 @@ module.exports = [
       href: "https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/favicon.ico",
     },
   ], //favicons，资源放在public文件夹
-
+  [
+    "script",
+    {
+      "data-ad-client": "ca-pub-1725717718088510",
+      async: true,
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+    },
+  ],
   [
     "link",
     {
