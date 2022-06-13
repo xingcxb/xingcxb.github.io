@@ -28,7 +28,6 @@
     "vuepress-plugin-meting": "^0.3.1",
     "vuepress-plugin-one-click-copy": "^1.0.2",
     "vuepress-plugin-reading-progress": "^1.0.10",
-    "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-plugin-thirdparty-search": "^1.0.2",
     "vuepress-plugin-zooming": "^1.1.7",
     "vuepress-theme-vdoing": "^1.11.1",
