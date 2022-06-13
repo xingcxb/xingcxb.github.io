@@ -37,8 +37,7 @@ module.exports = [
     "meta",
     {
       name: "keywords",
-      content:
-        "全栈博客,个人技术博客,Go,Golang开发,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown,Go",
+      content: "不器blog,Go,Golang开发,VuePress搭建,记录生活和技术路程",
     },
   ],
   ["meta", { name: "baidu-site-verification", content: "code-lnsYFdztcH" }],
