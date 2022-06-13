@@ -23,5 +23,12 @@ module.exports = {
         { text: "第三方库", link: "/java/lib/" },
       ],
     },
+    {
+      text: "前端",
+      items: [
+        { text: "Vue", link: "/front/vue/" },
+        { text: "VuePress", link: "/front/vuepress/" },
+      ],
+    },
   ],
 };
