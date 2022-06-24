@@ -1,5 +1,4 @@
 const baidutj = require("../common/baidutj.js");
-const googleAds = require("../common/googleAds.js");
 
 // head
 module.exports = [
@@ -11,14 +10,14 @@ module.exports = [
       href: "https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/favicon.ico",
     },
   ], //favicons，资源放在public文件夹
-  // [
-  //   "script",
-  //   {
-  //     async: "async",
-  //     crossorigin: "anonymous",
-  //     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1725717718088510",
-  //   },
-  // ],
+  [
+    "script",
+    {
+      async: "async",
+      crossorigin: "anonymous",
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1725717718088510",
+    },
+  ],
   [
     "link",
     {
@@ -59,8 +58,6 @@ module.exports = [
 
   // 百度统计 js
   ["script", {}, baidutj],
-  // 谷歌广告 js
-  ["script", {}, googleAds],
 
   /*  [
      'script',
