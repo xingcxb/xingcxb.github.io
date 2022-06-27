@@ -40,7 +40,13 @@ module.exports = [
       content: "不器blog,Go,Golang开发,VuePress搭建,记录生活和技术路程",
     },
   ],
-  ["meta", { name: "baidu-site-verification", content: "code-lnsYFdztcH" }],
+  [
+    "meta",
+    {
+      name: "google-site-verification",
+      content: "JfM7Cg2a2jlGXV2PfkH7sIRWZmcTa1aDCOHMaQH2UuE",
+    },
+  ],
   ["meta", { name: "theme-color", content: "#11a8cd" }], // 移动浏览器主题颜色
 
   // 下面四个 script 是 demo-block 插件用到，但是因为导航栏兼容问题，不再使用
