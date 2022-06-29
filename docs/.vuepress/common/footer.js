@@ -6,5 +6,5 @@ module.exports = {
     penName +
     " | " +
     footerTitle +
-    '<br> <a href="http://beian.miit.gov.cn/" target="_blank"></a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>', // 博客版权信息，支持a标签
+    '<br> <a href="http://beian.miit.gov.cn/" target="_blank"></a><a href="/sitemap.xml">sitemap</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>', // 博客版权信息，支持a标签
 };
