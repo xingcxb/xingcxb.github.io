@@ -5,7 +5,7 @@ const more = require("../nav/more");
 
 module.exports = [
   { text: "首页", link: "/" },
-  { text: "吐槽", link: "/speak/" },
+  { text: "随笔", link: "/speak/" },
   language,
   tools,
   { text: "读吧", link: "/read/" },
