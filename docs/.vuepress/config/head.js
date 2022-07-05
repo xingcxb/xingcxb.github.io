@@ -11,14 +11,6 @@ module.exports = [
     },
   ], //favicons，资源放在public文件夹
   [
-    "script",
-    {
-      async: true,
-      crossorigin: "anonymous",
-      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1725717718088510",
-    },
-  ],
-  [
     "link",
     {
       rel: "stylesheet",
@@ -65,13 +57,12 @@ module.exports = [
 
   // 百度统计 js
   ["script", {}, baidutj],
-
-  /*  [
-     'script',
-     {
-       'data-ad-client': 'ca-pub-7828333725993554',
-       async: 'async',
-       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-     },
-   ], */ // 网站关联Google AdSense 与 html格式广告支持
+  [
+    "script",
+    {
+      "data-ad-client": "ca-pub-1725717718088510",
+      async: "async",
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+    },
+  ], // 网站关联Google AdSense 与 html格式广告支持
 ];
