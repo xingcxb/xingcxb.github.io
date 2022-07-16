@@ -10,7 +10,5 @@ module.exports = [
   tools,
   { text: "读吧", link: "/read/" },
   projects,
-  { text: "时间线", link: "/archives/" },
-  { text: "关于", link: "/about/" },
   more,
 ];
