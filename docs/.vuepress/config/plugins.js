@@ -76,15 +76,6 @@ module.exports = [
       hm: "efdb43e9c4335da1fbabf3840b82c3ed",
     },
   ],
-  [
-    "@vuepress/last-updated", // "上次更新"时间格式
-    {
-      transformer: (timestamp, lang) => {
-        const dayjs = require("dayjs"); // https://day.js.org/
-        return dayjs(timestamp).format("YYYY/MM/DD, HH:mm:ss");
-      },
-    },
-  ],
   // 顶部阅读进度插件
   ["reading-progress"],
   // 动态标题，官网：https://moefyit.github.io/moefy-vuepress/packages/dynamic-title.html
