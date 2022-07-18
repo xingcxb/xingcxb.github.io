@@ -29,6 +29,7 @@ module.exports = {
   categoryText: "随笔", // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
 
   bodyBgImg: [
+    "/background/66666.png",
     "/background/60752300_p0.jpg",
     "/background/60866522_p0.jpg",
     "/background/62494753_p0.jpg",
