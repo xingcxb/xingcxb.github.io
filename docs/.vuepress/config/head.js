@@ -1,4 +1,5 @@
 const baidutj = require("../common/baidutj.js");
+const googletj = require("../common/googletj.js");
 
 // head
 module.exports = [
@@ -57,6 +58,15 @@ module.exports = [
 
   // 百度统计 js
   ["script", {}, baidutj],
+  [
+    "script",
+    {
+      async: "async",
+      src: "https://www.googletagmanager.com/gtag/js?id=UA-98291551-1",
+    },
+  ],
+  // 谷歌统计 js
+  ["script", {}, googletj],
   [
     "script",
     {
