@@ -83,10 +83,10 @@ module.exports = [
     "dynamic-title",
     {
       showIcon:
-        "https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/favicon.ico",
+        "https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
       showText: "ヾ(≧▽≦*)o欢迎回来！",
       hideIcon:
-        "https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/favicon.ico",
+        "https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
       hideText: "ಥ_ಥ不要走呀！",
       recoverTime: 2000, //  持续时间
     },

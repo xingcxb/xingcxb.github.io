@@ -13,15 +13,15 @@ features: # 可选的
   - title: 笔记
     details: Go、Vue框架等技术笔记
     link: /language/ # 可选
-    imgUrl: https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/stickers.png
+    imgUrl: https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/stickers.png
   - title: 吐槽
     details: 口嗨一句
     link: /speak/
-    imgUrl: https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/speak.png
+    imgUrl: https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/speak.png
   - title: 阅读
     details: 读书笔记
     link: /read/
-    imgUrl: https://symbol-node.oss-cn-shanghai.aliyuncs.com/blog/basic/reading.png
+    imgUrl: https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/reading.png
 # 文章列表显示方式: detailed 默认，显示详细版文章列表（包括作者、分类、标签、摘要、分页等）| simple => 显示简约版文章列表（仅标题和日期）| none 不显示文章列表
 postList: detailed
 ---
