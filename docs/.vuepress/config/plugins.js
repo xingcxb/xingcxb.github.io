@@ -7,7 +7,23 @@ module.exports = [
       globalUIComponents: ["BlockToggle", "GlobalTip", "Aplayer"], // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
     },
   ],
-  ["sitemap", { hostname: "https://xingcxb.com" }],
+  [
+    "vuepress-plugin-vdoing-comment",
+    {
+      choosen: "gitalk",
+      options: {
+        clientID: "51e233f2dada49dcdac8",
+        clientSecret: "38cc569d9433f9113c256ef3cf0b25ade576f5cc",
+        repo: "GitHub repo",
+        owner: "GitHub repo owner",
+        admin: [
+          "GitHub repo owner and collaborators, only these guys can initialize github issues",
+        ],
+        distractionFreeMode: false,
+      },
+    },
+  ],
+  [("sitemap", { hostname: "https://xingcxb.com" })],
   // 谷歌统计代码
   [
     "@vuepress/google-analytics",
