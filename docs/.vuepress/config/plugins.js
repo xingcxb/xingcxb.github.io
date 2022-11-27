@@ -14,11 +14,9 @@ module.exports = [
       options: {
         clientID: "51e233f2dada49dcdac8",
         clientSecret: "38cc569d9433f9113c256ef3cf0b25ade576f5cc",
-        repo: "GitHub repo",
-        owner: "GitHub repo owner",
-        admin: [
-          "GitHub repo owner and collaborators, only these guys can initialize github issues",
-        ],
+        repo: "xingcxb.github.io", // 仓库
+        owner: "xingcxb", //所有者
+        admin: ["xingcxb"],
         distractionFreeMode: false,
       },
     },
