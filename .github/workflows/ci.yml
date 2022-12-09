@@ -46,5 +46,20 @@ jobs:
           remote_addr=https://${user_name}:${{secrets.GITHUB_TOKEN}}@${remote_addr}
           git remote add origin ${remote_addr}
           git push origin HEAD:$deploy_branch --force # 推送到github $deploy_branch分支
+          # deploy to github
+          echo 'xingcxb.com' > CNAME
+          if [ -z "$GITHUB_TOKEN" ]; then
+            msg='deploy'
+            githubUrl=git@github.com:xingcxb/xingcxb.github.io.git
+          else
+            msg='来自github action的自动部署'
+            githubUrl=https://${user_name}:${GITHUB_TOKEN}@github.com/xingcxb/xingcxb.github.io.git
+            git config --global user.name "xingcxb"
+            git config --global user.email "xingcxb@hotmail.com"
+          fi
+          git init
+          git add -A
+          git commit -m "${msg}"
+          git push -f $githubUrl master:gh-pages # 推送到github
 
       # 如只提交到github pages可以使用github-pages-deploy-action，详见: https://github.com/JamesIves/github-pages-deploy-action
