@@ -12,6 +12,8 @@ cd docs/.vuepress/dist
 # deploy to github pages
 echo 'xingcxb.com' > CNAME
 
+echo 'google.com, pub-1725717718088510, DIRECT, f08c47fec0942fa0' > ads.txt
+
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:xingcxb/xingcxb.github.io.git
