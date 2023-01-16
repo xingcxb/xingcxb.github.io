@@ -103,10 +103,10 @@ module.exports = [
     "dynamic-title",
     {
       showIcon:
-        "https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
+        "https://cdn.staticaly.com/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
       showText: "ヾ(≧▽≦*)o欢迎回来！",
       hideIcon:
-        "https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
+        "https://cdn.staticaly.com/gh/xingcxb/blog_img@blog1/blog/basic/favicon.ico",
       hideText: "ಥ_ಥ不要走呀！",
       recoverTime: 2000, //  持续时间
     },
