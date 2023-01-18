@@ -108,15 +108,17 @@ module.exports = {
         </script>`,
   // pageTshowMode: 'article',
   pageB: `<!-- 横向自适应 -->
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-7828333725993554"
-            data-ad-slot="6620245489"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>`,
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1725717718088510"
+        crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+        style="display:block; text-align:center;"
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-1725717718088510"
+        data-ad-slot="7426219401"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>`,
   // pageBshowMode: 'article',
   // windowLB: // 会遮挡部分侧边栏
   //   `<!-- 固定200*200px -->
