@@ -88,24 +88,8 @@ module.exports = {
   //     <script>
   //         (adsbygoogle = window.adsbygoogle || []).push({});
   //     </script>`,
-  sidebarB: `<!-- 正方形 -->
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-7828333725993554"
-            data-ad-slot="3508773082"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>`,
-  pageT: `<!-- 固定100% * 90px可显示，max-height:90px未见显示-->
-       <ins class="adsbygoogle"
-            style="display:inline-block;width:100%;max-height:90px"
-            data-ad-client="ca-pub-7828333725993554"
-            data-ad-slot="6625304284"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>`,
+  sidebarB: `<!-- 正方形 -->`,
+  pageT: `<!-- 固定100% * 90px可显示，max-height:90px未见显示-->`,
   // pageTshowMode: 'article',
   pageB: `<!-- 横向自适应 -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1725717718088510"
@@ -131,13 +115,6 @@ module.exports = {
   //         (adsbygoogle = window.adsbygoogle || []).push({});
   //     </script>`,
   windowRB: `<!-- 固定160*160px -->
-        <ins class="adsbygoogle"
-            style="display:inline-block;max-width:160px;max-height:160px"
-            data-ad-client="ca-pub-7828333725993554"
-            data-ad-slot="8377369658"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
         `,
 };
 

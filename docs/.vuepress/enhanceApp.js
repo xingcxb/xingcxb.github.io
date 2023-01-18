@@ -9,6 +9,20 @@ export default ({
   siteData, // 站点元数据
   isServer, // 当前应用配置是处于 服务端渲染 或 客户端
 }) => {
+  // 谷歌单元广告
+  if (typeof window !== "undefined") {
+    import("vue-google-adsense")
+      .then((module) => {
+        const Ads = module.default;
+        Vue.use(require("vue-script2"));
+        Vue.use(Ads.Adsense);
+        Vue.use(Ads.InArticleAdsense);
+        Vue.use(Ads.InFeedAdsense);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
   // 判断是否绑定时间是否绑定成功
   let isMounted = false;
   // 最后一次阅读位置跳转
