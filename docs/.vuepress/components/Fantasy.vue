@@ -10,10 +10,16 @@
 <script>
 export default {
   mounted() {
-    // 如果使用 IndexBigImg.vue，则去掉该组件提供的时间罩
-    this.clearBannerColor();
-    this.mountedElement();
-    this.init();
+    // 只有一个 fantasy 元素，防止重复加载多个图片
+    if (document.getElementsByClassName("fantasy").length == 1) {
+      // 如果使用 IndexBigImg.vue，则去掉该组件提供的时间罩
+      this.clearBannerColor();
+      // 如果是在首页注册该组件，则挂载到正确的位置
+      if (this.$attrs.index) {
+        this.mountedElement();
+      }
+      this.init();
+    }
   },
   methods: {
     init() {
@@ -260,6 +266,7 @@ export default {
 
       var iv = setInterval(() => {
         if (screen.complete && screenMask.complete) {
+          // 可以切换图片的位置，也可以换成自己的图片
           screenImageCtx.drawImage(screen, -300, -50, 1280, 720);
           screenImageCtx.globalCompositeOperation = "destination-atop";
           screenImageCtx.drawImage(screenMask, 0, 0);
@@ -575,16 +582,13 @@ export default {
 
       window.requestAnimationFrame(render);
     },
+    // 针对首页挂载元素
     mountedElement() {
-      var fantasy = document.getElementsByClassName("fantasy")[0];
-      document.getElementsByClassName("banner")[0].appendChild(fantasy);
-      // 下面是全局背景图，如果使用，则取 plugins 里以组件名来注册插件
-      // let interval = setInterval(() => {
-      //   let theme = document.getElementsByClassName("theme-container")[0];
-      //   if (theme) {
-      //     theme.appendChild(fantasy);
-      //   }
-      // }, 100);
+      let fantasy = document.getElementsByClassName("fantasy")[0];
+      let banner = document.getElementsByClassName("banner")[0];
+      // 去掉黑色栅格背景
+      banner.style.background = "";
+      fantasy && banner && banner.appendChild(fantasy);
     },
     clearBannerColor() {
       let bannerColor = document.getElementsByClassName("banner-color")[0];

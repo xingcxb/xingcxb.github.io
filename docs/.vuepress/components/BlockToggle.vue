@@ -223,7 +223,7 @@ div[class*="language-"].line-numbers-mode::after {
 }
 
 /* 如果你浅色模式的代码块背景色是浅灰色，则取消下面的注释使代码生效，如果是黑色，则注释下面的三段代码（我注释了，因为是黑色背景） */
-/* .theme-mode-light .expand {
+.theme-mode-light .expand {
   color: #666;
 }
 .theme-mode-light div[class*="language-"]::before {
@@ -231,5 +231,5 @@ div[class*="language-"].line-numbers-mode::after {
 }
 .theme-mode-light .code-copy {
   fill: #666;
-} */
+}
 </style>

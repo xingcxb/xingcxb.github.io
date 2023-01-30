@@ -5,22 +5,13 @@ module.exports = {
   items: [
     {
       text: "GoLang",
-      items: [
-        {
-          text: "基础",
-          link: "/go/basic/",
-        },
-        {
-          text: "第三方库",
-          link: "/go/lib/",
-        },
-      ],
+      link: "/go/",
     },
     {
       text: "前端",
       items: [
-        { text: "Vue", link: "/front/vue/" },
-        { text: "VuePress", link: "/front/vuepress/" },
+        { text: "Vue", link: "/vue/" },
+        { text: "VuePress", link: "/vuepress/" },
       ],
     },
   ],

@@ -1,7 +1,8 @@
 <template></template>
 
 <script>
-const indexTip = false; // 首页是否开启时间消息提示，默认 false。因为首页大图模块已经内置时间消息提示，所以我不需要开启。
+// 首页是否开启时间消息提示，默认 false。因为首页大图模块已经内置时间消息提示，所以这里不需要开启，如果您不使用首页大图模块，可以将此值设置为 true。
+const indexTip = false;
 export default {
   mounted() {
     // 首页不弹出消息提示，因为首页大图模块已经内置首页的消息提示

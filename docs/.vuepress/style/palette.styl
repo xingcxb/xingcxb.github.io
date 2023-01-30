@@ -28,10 +28,10 @@
 
 // 颜色
 
-$bannerTextColor = #07c245 // 首页 banner 区(博客标题)文本颜色
+$bannerTextColor = #fff // 首页 banner 区(博客标题)文本颜色
 $accentColor = #11A8CD
 $activeColor = #ff5722
-$arrowBgColor = #07c245
+$arrowBgColor = #ccc
 $badgeTipColor = #42b983
 $badgeWarningColor = darken(#ffe564, 35%)
 $badgeErrorColor = #DA5961
@@ -66,30 +66,30 @@ strong
   font-weight bold
 
 .footer {
-  color: #939aa2;
+  color: #fff;
 }
 
 p code {
   // `` 包括的高亮，点击高亮后不再全选
   user-select: auto !important;
 }
-
-.theme-vdoing-content:not(.custom) > h1,
-.theme-vdoing-content:not(.custom) > h2,
-.theme-vdoing-content:not(.custom) > h3,
-.theme-vdoing-content:not(.custom) > h4,
-.theme-vdoing-content:not(.custom) > h5,
-.theme-vdoing-content:not(.custom) > h6 {
-  margin-top: -1.1rem;
-  padding-top: 2.6rem;
-}
+// 该 bug 官方已经修复，所以目前不再需要
+// .theme-vdoing-content:not(.custom) > h1,
+// .theme-vdoing-content:not(.custom) > h2,
+// .theme-vdoing-content:not(.custom) > h3,
+// .theme-vdoing-content:not(.custom) > h4,
+// .theme-vdoing-content:not(.custom) > h5,
+// .theme-vdoing-content:not(.custom) > h6 {
+//   margin-top: -1.1rem;
+//   padding-top: 2.6rem;
+// }
 
 .theme-mode-light
   --bodyBg: #f4f4f4
   --mainBg: rgba(255,255,255,1)
   --sidebarBg: rgba(255,255,255,.8)
   --blurBg: rgba(255,255,255,.9)
-  --customBlockBg: #ffff
+  --customBlockBg: #fff
   --textColor: #00323c
   --textLightenColor: #d63200     // `` 高亮，原来是 #0085AD
   --borderColor: rgba(0,0,0,.15)
@@ -280,22 +280,6 @@ p code {
  $readingBgColor = transparent
  $readingZIndex = 1000
  $readingSize = 3px
- $readingProgressColor = #07c245
+ $readingProgressColor = #b160ea
  $readingProgressImage = none
  
- // 评论
- .theme-mode-dark #vuepress-plugin-vdoing-comment {
-  --at-color-bg: --bodyBg;
-  color: #ffffff;
-  --at-color-font: #ffffff;
-  --at-color-bg-transl: --bodyBg;
-  --at-color-bg-grey: #373a40
-}
-
-.theme-mode-dark #vuepress-plugin-vdoing-comment .atk-editor-plug-emoticons > .atk-grp-switcher > span:hover, .atk-editor-plug-emoticons > .atk-grp-switcher > span.active {
-  background: var(--at-color-bg-grey);
-}
-
-.theme-mode-dark #vuepress-plugin-vdoing-comment .atk-editor-plug-emoticons > .atk-grp-switcher {
-  background: var(--at-color-bg-grey)
-}

@@ -193,9 +193,9 @@ export default {
     },
     // 背景色随时间变化，时间提示框内容随时间变化
     bgTimeColorAndTip() {
-      var hours = new Date().getHours();
-      var minutes = new Date().getMinutes();
-      var seconds = new Date().getSeconds();
+      let hours = new Date().getHours();
+      let minutes = new Date().getMinutes();
+      let seconds = new Date().getSeconds();
       hours = hours < 10 ? "0" + hours : hours;
       minutes = minutes < 10 ? "0" + minutes : minutes;
       seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -420,7 +420,7 @@ export default {
     },
   },
   // 防止重写编译时，导致定时器叠加问题
-  created() {
+  beforeMount() {
     clearInterval(this.fadeInInterval);
     clearInterval(this.fadeOutInterval);
   },
@@ -439,7 +439,7 @@ export default {
  * 在 head 里添加图标 link 地址：https://at.alicdn.com/t/font_3114978_qe0b39no76.css
  */
 function addTip(content, type, startHeight = 50, dieTime = 3000) {
-  var tip = document.querySelectorAll(".index-tip");
+  var tip = document.querySelectorAll(".global-tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
   var top = tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-top");
@@ -449,7 +449,7 @@ function addTip(content, type, startHeight = 50, dieTime = 3000) {
     (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
 
   let div = document.createElement("div");
-  div.className = `index-tip tip-${type} ${time}`;
+  div.className = `global-tip tip-${type} ${time}`;
   div.style.top = parseInt(top) + "px";
   div.setAttribute("data-top", lastTop);
   if (type == "info" || type == 1) {
@@ -508,7 +508,6 @@ function nextAllTipElement(elem) {
 .vdoing-index-class .home-wrapper .banner {
   margin-top: 0 !important;
   height: 100vh;
-  color: #002c34;
   background-attachment: fixed !important;
 }
 
@@ -542,7 +541,7 @@ function nextAllTipElement(elem) {
 
 /* 页脚的颜色 */
 .vdoing-index-class .footer {
-  color: #151f26;
+  color: #fff;
 }
 
 .vdoing-index-class .search-box1 input {
@@ -595,8 +594,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #07c245;
-  border-top: 3px solid #07c245;
+  border-right: 3px solid #fff;
+  border-top: 3px solid #fff;
   transform: rotate(135deg);
   position: absolute;
   bottom: 10px;
@@ -607,8 +606,8 @@ function nextAllTipElement(elem) {
   width: 20px;
   height: 20px;
   display: block;
-  border-right: 3px solid #07c245;
-  border-top: 3px solid #07c245;
+  border-right: 3px solid #fff;
+  border-top: 3px solid #fff;
   transform: rotate(135deg);
 }
 
@@ -644,7 +643,7 @@ function nextAllTipElement(elem) {
 }
 
 /* 提示框元素 */
-.index-tip {
+.global-tip {
   position: fixed;
   display: flex;
   top: -10px;
@@ -661,7 +660,7 @@ function nextAllTipElement(elem) {
   line-height: 17px;
 }
 
-.index-tip p {
+.global-tip p {
   line-height: 17px;
   margin: 0;
   font-size: 14px;
