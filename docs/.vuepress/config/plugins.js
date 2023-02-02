@@ -27,7 +27,7 @@ module.exports = [
     },
   ],
   ["vuepress-plugin-mermaidjs"],
-  [("sitemap", { hostname: "https://xingcxb.com" })],
+  ["sitemap", { hostname: "https://xingcxb.com" }],
   // 谷歌统计代码
   [
     "@vuepress/google-analytics",
