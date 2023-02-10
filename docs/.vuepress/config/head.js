@@ -1,5 +1,6 @@
 const baidutj = require("../common/baidutj.js");
 const googletj = require("../common/googletj.js");
+const googleAdblock = require("../common/adblock.js");
 
 // head
 module.exports = [
@@ -67,6 +68,7 @@ module.exports = [
   ],
   // 谷歌统计 js
   ["script", {}, googletj],
+  ["script", {}, googleAdblock],
   [
     "script",
     {
