@@ -11,3 +11,7 @@
 但愿`GitHub`别倒闭了，让我可以拥有免费的网站服务器，能记录下我的想写想说。
 
 地址：[不器小窝](https://xingcxb.com)
+
+## ⭐`Star goKit`
+
+[![Stargazers over time](https://starchart.cc/xingcxb/xingcxb.github.io.svg)](https://starchart.cc/xingcxb/xingcxb.github.io)
