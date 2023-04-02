@@ -14,13 +14,13 @@
     "updateTheme": "yarn remove vuepress-theme-vdoing && rm -rf node_modules && yarn && yarn add vuepress-theme-vdoing -D"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.9.8",
+    "@vuepress/plugin-google-analytics": "^1.9.9",
     "dayjs": "^1.11.7",
     "inquirer": "^9.1.4",
     "json2yaml": "^1.1.0",
     "vue-google-adsense": "^1.10.1",
     "vue-script2": "^2.1.0",
-    "vuepress": "^1.9.8",
+    "vuepress": "^1.9.9",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-baidu-tongji": "^1.0.1",
     "vuepress-plugin-cursor-effects": "^1.1.6",
@@ -33,7 +33,7 @@
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-plugin-thirdparty-search": "^1.0.2",
-    "vuepress-plugin-vdoing-comment": "^1.0.3",
+    "vuepress-plugin-vdoing-comment": "^1.1.0",
     "vuepress-plugin-zooming": "^1.1.8",
     "vuepress-theme-vdoing": "^1.12.8",
     "yamljs": "^0.3.0"
