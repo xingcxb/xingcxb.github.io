@@ -30,7 +30,8 @@ module.exports = [
     "meta",
     {
       name: "keywords",
-      content: "不器blog,Go,Golang开发,VuePress搭建,记录生活和技术路程",
+      content:
+        "不器blog,flutter开发,随笔,读书笔记,Go,Golang开发,VuePress搭建,记录生活和技术路程",
     },
   ],
   [
