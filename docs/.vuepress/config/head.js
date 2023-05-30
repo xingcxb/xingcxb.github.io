@@ -31,7 +31,7 @@ module.exports = [
     {
       name: "keywords",
       content:
-        "不器小窝,不器blog,flutter开发,随笔,读书笔记,Go,Golang开发,VuePress搭建,记录生活和技术路程",
+        "不器小窝,不器blog,不器博客,flutter开发,随笔,读书笔记,Go,Golang开发,VuePress搭建,记录生活和技术路程",
     },
   ],
   [
