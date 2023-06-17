@@ -63,7 +63,7 @@ module.exports = [
     "script",
     {
       async: "async",
-      src: "https://www.googletagmanager.com/gtag/js?id=UA-98291551-1",
+      src: "https://www.googletagmanager.com/gtag/js?id=G-Q9XQS90GYB",
     },
   ],
   // 谷歌统计 js
