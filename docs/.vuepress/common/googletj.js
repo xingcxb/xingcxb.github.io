@@ -5,7 +5,7 @@ const googletj = `
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-98291551-1');
+  gtag('config', 'G-Q9XQS90GYB');
 `;
 
 module.exports = googletj;
