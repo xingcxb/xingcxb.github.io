@@ -35,7 +35,7 @@
     "vuepress-plugin-thirdparty-search": "^1.0.2",
     "vuepress-plugin-vdoing-comment": "^1.1.0",
     "vuepress-plugin-zooming": "^1.1.8",
-    "vuepress-theme-vdoing": "^1.12.8",
+    "vuepress-theme-vdoing": "^1.12.9",
     "yamljs": "^0.3.0"
   },
   "dependencies": {
