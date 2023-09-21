@@ -9,7 +9,7 @@ const link = "https://xingcxb.github.io/";
 const footerTitle = "小窝";
 // 头像图片
 const avatar =
-  "https://cdn.staticaly.com/gh/xingcxb/blog_img@blog1/blog/basic/Avatar.png";
+  "https://cdn.jsdelivr.net/gh/xingcxb/blog_img@blog1/blog/basic/Avatar.png";
 // 头像下的昵称
 const name = "不器";
 // 头像下的签名
